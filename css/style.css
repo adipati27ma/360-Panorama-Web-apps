@@ -1,0 +1,133 @@
+@import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+
+.panorama-image {
+  width: 100%;
+  height: 100vh;
+}
+
+#desc-container {
+  max-width: 500px;
+  max-height: 500px;
+  min-width: 200px;
+  min-height: 250px;
+  background: #fff;
+  color: #000;
+  border-radius: 3px;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+#desc-container>iframe {
+  border: none;
+  width: 100%;
+}
+
+.title {
+  font-size: 1.5em;
+  text-align: center;
+  padding: 5px;
+  background-color: rgba(255, 255, 255, 0.8)
+}
+
+.text {
+  padding: 0 20px 20px 20px;
+}
+
+.infospot {
+  width: 400px;
+  position: relative;
+  display: none;
+}
+
+.infospot.show {
+  display: block;
+}
+
+.toggle-wrapper {
+  padding: 1rem;
+  background: rgba(112, 128, 144, 0.9);
+  color: rgb(209, 217, 226);
+  font-weight: bold;
+  border-radius: 10px 10px 0 0;
+  overflow: auto;
+  transition: 1s;
+  cursor: pointer;
+  -webkit-overflow-scrolling: touch;
+}
+
+.content-infospot {
+  position: absolute;
+  top: 1rem*2;
+  width: 100%;
+  max-height: 300px;
+  padding: .8rem;
+  background: rgba(112, 128, 144, 0.5);
+  border-top: 2px solid slategray;
+  border-radius: 0 0 15px 15px;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+
+  display: none;
+  transform: translateY(-80px);
+  opacity: 0;
+  transition: .5s;
+  z-index: -1;
+}
+
+.content-infospot.show {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+
+.content-wrapper {
+  width: 100%;
+  border-radius: 7px;
+  overflow: hidden;
+}
+
+.content-wrapper.other {
+  margin-top: 5px;
+}
+
+.content-wrapper>img {
+  width: 100%;
+  border-radius: 0 0 7px 7px;
+  cursor: pointer;
+}
+
+
+/* Image Viewer */
+.image-viewer-overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  display: none;
+  width: 100vw;
+  height: 100vh;
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.8);
+
+  opacity: 0;
+  transition: .3s;
+}
+
+.image-viewer-overlay.show {
+  opacity: 1;
+}
+
+.image-viewer-overlay .content {
+  display: flex;
+  max-width: 85%;
+  max-height: 100%;
+  justify-content: center;
+  justify-items: center;
+  margin: auto;
+}
+
+.image-viewer-overlay .content img {
+  width: 100%;
+}
