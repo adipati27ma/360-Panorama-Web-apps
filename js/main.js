@@ -16,7 +16,7 @@ panoImage.addEventListener('mouseup', () => {
 const panorama = new PANOLENS.ImagePanorama(lakePano);
 const viewer = new PANOLENS.Viewer({
   container: panoImage,
-  // autoRotate: true,
+  autoRotate: true,
   autoRotateSpeed: 0.5,
   output: 'console',
 });
@@ -30,13 +30,13 @@ infospot2.position.set(4961.67, 401.3, -416.92);
 infospot2.addHoverElement(document.getElementById('desc-container'), -200);
 
 const infospot3 = new PANOLENS.Infospot();
-// infospot3.position.set(-3523.79, -620.04, 3477.75);
-infospot3.position.set(-2032.76, -215.69, -4558.7);
+infospot3.position.set(-3523.79, -620.04, 3477.75);
+// infospot3.position.set(-2032.76, -215.69, -4558.7);
 infospot3.addHoverElement(document.querySelector('.infospot-3'), -55);
 infospot3.lockHoverElement();
 
 const infospot4 = new PANOLENS.Infospot();
-infospot4.position.set(867.81, 682.31, 4867.65);
+infospot4.position.set(385.77, 427.56, -4960.2);
 infospot4.addHoverElement(document.querySelector('.infospot-4'), -55);
 infospot4.lockHoverElement();
 
