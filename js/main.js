@@ -1,5 +1,5 @@
 const panoImage = document.querySelector('.panorama-image');
-const lakePano = '../images/pano2.jpg';
+const lakePano = '../images/laut-dangkal.jpg';
 
 // For Mouse Event---
 panoImage.addEventListener('mousedown', () => {
