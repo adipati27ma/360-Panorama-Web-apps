@@ -114,52 +114,60 @@ const infospotEl = document.querySelectorAll('.infospot');
 const overlayContainer = document.querySelector('.image-viewer-overlay');
 const imageOverlay = document.querySelector('img.image-zoom');
 
-infospotEl.forEach((el) => {
-  el.addEventListener('click', (e) => {
-    const contentInfospot = e.target.nextElementSibling;
+function toggleInfospot(e) {
+  const contentInfospot = e.target.nextElementSibling;
 
-    // Check if content infospot exist
-    if (contentInfospot) {
-      // Check if content infospot is show or not
-      if (contentInfospot.classList.contains('show')) {
-        // Hide content
-        contentInfospot.classList.remove('show');
+  // Check if content infospot exist
+  if (contentInfospot) {
+    // Check if content infospot is show or not
+    if (contentInfospot.classList.contains('show')) {
+      // Hide content
+      contentInfospot.classList.remove('show');
+      setTimeout(() => {
+        contentInfospot.style.display = 'none';
+      }, 500);
+    } else {
+      // Show content
+      contentInfospot.style.display = 'block';
+      setTimeout(() => {
+        contentInfospot.classList.add('show');
+      }, 1);
+
+      // addEventListener to img in active infospot
+      const img = contentInfospot.querySelector('img');
+      function onClickImage(e) {
+        imageOverlay.src = e.target.src;
+        imageOverlay.alt = e.target.src;
+        console.log(img);
+        console.log(img.src);
+        overlayContainer.style.display = 'flex';
         setTimeout(() => {
-          contentInfospot.style.display = 'none';
-        }, 500);
-      } else {
-        // Show content
-        contentInfospot.style.display = 'block';
-        setTimeout(() => {
-          contentInfospot.classList.add('show');
+          overlayContainer.classList.add('show');
         }, 1);
-
-        // addEventListener to img in active infospot
-        const img = contentInfospot.querySelector('img');
-        img.addEventListener('click', (e) => {
-          imageOverlay.src = e.target.src;
-          imageOverlay.alt = e.target.src;
-          console.log(img);
-          console.log(img.src);
-          overlayContainer.style.display = 'flex';
-          setTimeout(() => {
-            overlayContainer.classList.add('show');
-          }, 1);
-        });
       }
+      img.addEventListener('click', onClickImage);
+      img.addEventListener('touchstart', onClickImage);
     }
-  });
+  }
+}
+
+infospotEl.forEach((el) => {
+  el.addEventListener('click', toggleInfospot);
+  el.addEventListener('touchstart', toggleInfospot);
 });
 
 // Exit Overlay Viewer on background click
-overlayContainer.addEventListener('click', (e) => {
+function exitOverlay(e) {
   if (e.target.classList.contains('image-viewer-overlay')) {
     overlayContainer.classList.remove('show');
     setTimeout(() => {
       overlayContainer.style.display = 'none';
     }, 300);
   }
-});
+}
+
+overlayContainer.addEventListener('click', exitOverlay);
+overlayContainer.addEventListener('touchstart', exitOverlay);
 
 // Hide Content Infospot on panorama-click
 const allContentInfospot = document.querySelectorAll('.content-infospot');
