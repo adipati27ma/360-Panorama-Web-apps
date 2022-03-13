@@ -27,7 +27,7 @@ const viewer = new PANOLENS.Viewer({
   autoRotateSpeed: 0.5,
   autoRotateActivationDuration: 10000,
   // initialLookAt: new THREE.Vector3(4365.89, 221.37, 2410.68), // tidak bisa dipakai, panolens lama:(
-  controlBar: false,
+  // controlBar: false,
   output: 'console',
 });
 
@@ -61,6 +61,12 @@ const infospotPengamat = new PANOLENS.Infospot();
 infospotPengamat.position.set(-4878.99, 33.45, 1078.34);
 infospotPengamat.addHoverText('Pengamat');
 
+// Infospot Add to each Pano
+panorama1.add(infospot1, infospot2, infospot3, infospot4);
+panorama4.add(infospotPengamat);
+
+/* --End of Infospot code-- */
+
 // PanoLoading Event Listener
 let progress, progressElement;
 progressElement = document.getElementById('progress');
@@ -87,12 +93,6 @@ panorama3.addEventListener('enter', onEnter);
 panorama4.addEventListener('progress', onProgress);
 panorama4.addEventListener('enter', onEnter);
 // End of PanoLoading Event Listener
-
-// Infospot Add to each Pano
-panorama1.add(infospot1, infospot2, infospot3, infospot4);
-panorama4.add(infospotPengamat);
-
-/* --End of Infospot code-- */
 
 viewer.add(panorama1, panorama2, panorama3, panorama4);
 
