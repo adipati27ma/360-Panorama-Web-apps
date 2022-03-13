@@ -1,5 +1,8 @@
 const panoImage = document.querySelector('.panorama-image');
-const lakePano = '../images/laut-dangkal.jpg';
+const lakePano = '../images/pano2.jpg';
+const shallowSeaPano = '../images/laut-dangkal.jpg';
+const dessertPano = '../images/dessert.jpg';
+const riverPano = '../images/sungai.jpeg';
 
 // For Mouse Event---
 panoImage.addEventListener('mousedown', () => {
@@ -13,7 +16,10 @@ panoImage.addEventListener('mouseup', () => {
 
 //
 // Panorama Code---
-const panorama = new PANOLENS.ImagePanorama(lakePano);
+const panorama1 = new PANOLENS.ImagePanorama(lakePano);
+const panorama2 = new PANOLENS.ImagePanorama(shallowSeaPano);
+const panorama3 = new PANOLENS.ImagePanorama(dessertPano);
+const panorama4 = new PANOLENS.ImagePanorama(riverPano);
 const viewer = new PANOLENS.Viewer({
   container: panoImage,
   autoRotate: true,
@@ -21,9 +27,11 @@ const viewer = new PANOLENS.Viewer({
   output: 'console',
 });
 
-const infospot = new PANOLENS.Infospot();
-infospot.position.set(4358.64, 483.64, 2386.35);
-infospot.addHoverText('Welcome to Manson Lake');
+/* --Infospot code-- */
+// ---Infospot Pano 1
+const infospot1 = new PANOLENS.Infospot();
+infospot1.position.set(4358.64, 483.64, 2386.35);
+infospot1.addHoverText('Welcome to Manson Lake');
 
 const infospot2 = new PANOLENS.Infospot();
 infospot2.position.set(4961.67, 401.3, -416.92);
@@ -40,11 +48,37 @@ infospot4.position.set(385.77, 427.56, -4960.2);
 infospot4.addHoverElement(document.querySelector('.infospot-4'), -55);
 infospot4.lockHoverElement();
 
-panorama.add(infospot);
-panorama.add(infospot2);
-panorama.add(infospot3);
-panorama.add(infospot4);
-viewer.add(panorama);
+// ---Infospot Pano 2
+
+// ---Infospot Pano 3
+
+// ---Infospot Pano 4
+const infospotPengamat = new PANOLENS.Infospot();
+infospotPengamat.position.set(-4878.99, 33.45, 1078.34);
+infospotPengamat.addHoverText('Pengamat');
+
+// Infospot Add to each Pano
+panorama1.add(infospot1);
+panorama1.add(infospot2);
+panorama1.add(infospot3);
+panorama1.add(infospot4);
+panorama4.add(infospotPengamat);
+
+/* --End of Infospot code-- */
+
+viewer.add(panorama1);
+viewer.add(panorama2);
+viewer.add(panorama3);
+viewer.add(panorama4);
+
+// Panorama Link
+panorama1.link(panorama2, new THREE.Vector3(4815.14, -425.18, -1247.19));
+panorama1.link(panorama3, new THREE.Vector3(4974.48, 100.5, 411.7));
+panorama1.link(panorama4, new THREE.Vector3(100.13, 80.29, 4991.6));
+panorama2.link(panorama1, new THREE.Vector3(2328.12, 2263.85, -3796.19));
+panorama3.link(panorama1, new THREE.Vector3(4351.12, 1126.62, -2172.69));
+panorama4.link(panorama1, new THREE.Vector3(1411.58, -361.02, -4776.39));
+
 // End of Panorama Code---
 //
 
