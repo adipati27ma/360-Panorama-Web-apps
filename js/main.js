@@ -20,10 +20,14 @@ const panorama1 = new PANOLENS.ImagePanorama(lakePano);
 const panorama2 = new PANOLENS.ImagePanorama(shallowSeaPano);
 const panorama3 = new PANOLENS.ImagePanorama(dessertPano);
 const panorama4 = new PANOLENS.ImagePanorama(riverPano);
+
 const viewer = new PANOLENS.Viewer({
   container: panoImage,
   autoRotate: true,
   autoRotateSpeed: 0.5,
+  autoRotateActivationDuration: 10000,
+  // initialLookAt: new THREE.Vector3(4365.89, 221.37, 2410.68), // tidak bisa dipakai, panolens lama:(
+  controlBar: false,
   output: 'console',
 });
 
@@ -57,19 +61,40 @@ const infospotPengamat = new PANOLENS.Infospot();
 infospotPengamat.position.set(-4878.99, 33.45, 1078.34);
 infospotPengamat.addHoverText('Pengamat');
 
+// PanoLoading Event Listener
+let progress, progressElement;
+progressElement = document.getElementById('progress');
+
+function onEnter(event) {
+  progressElement.style.width = 0;
+  progressElement.classList.remove('finish');
+}
+
+function onProgress(event) {
+  progress = (event.progress.loaded / event.progress.total) * 100;
+  progressElement.style.width = progress + '%';
+  if (progress === 100) {
+    progressElement.classList.add('finish');
+  }
+}
+
+panorama1.addEventListener('progress', onProgress);
+panorama1.addEventListener('enter', onEnter);
+panorama2.addEventListener('progress', onProgress);
+panorama2.addEventListener('enter', onEnter);
+panorama3.addEventListener('progress', onProgress);
+panorama3.addEventListener('enter', onEnter);
+panorama4.addEventListener('progress', onProgress);
+panorama4.addEventListener('enter', onEnter);
+// End of PanoLoading Event Listener
+
 // Infospot Add to each Pano
-panorama1.add(infospot1);
-panorama1.add(infospot2);
-panorama1.add(infospot3);
-panorama1.add(infospot4);
+panorama1.add(infospot1, infospot2, infospot3, infospot4);
 panorama4.add(infospotPengamat);
 
 /* --End of Infospot code-- */
 
-viewer.add(panorama1);
-viewer.add(panorama2);
-viewer.add(panorama3);
-viewer.add(panorama4);
+viewer.add(panorama1, panorama2, panorama3, panorama4);
 
 // Panorama Link
 panorama1.link(panorama2, new THREE.Vector3(4815.14, -425.18, -1247.19));
