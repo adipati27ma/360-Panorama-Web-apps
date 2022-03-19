@@ -212,7 +212,7 @@ function onEnter(event, panoNumber) {
   progressElement.style.width = 0;
   progressElement.classList.remove('finish');
 
-  // Khusus pano0 tidak ada onProgress(), jadi listener dipindahkan ke onEnter()
+  // Khusus pano0 tidak ada onProgress() kecuali di awal, jadi listener dipindahkan ke onEnter()
   switch (panoNumber) {
     case 0:
       navTitle.innerHTML = 'Virtual Field Trip';
@@ -238,8 +238,13 @@ function onProgress(event, panoNumber) {
       element.classList.remove('active');
     });
 
-    // Khusus pano0 tidak ada onProgress(), jadi listener dipindahkan ke onEnter()
+    // Khusus pano0 tidak ada onProgress() kecuali di awal, jadi listener dipindahkan ke onEnter()
     switch (panoNumber) {
+      case 0:
+        navTitle.innerHTML = 'Virtual Field Trip';
+        menuItem[panoNumber].classList.add('active');
+        break;
+
       case 1:
         navTitle.innerHTML = 'Ekosistem Laut Dangkal';
         menuItem[panoNumber].classList.add('active');
@@ -261,7 +266,7 @@ function onProgress(event, panoNumber) {
   }
 }
 
-// Khusus pano0 tidak ada onProgress(), jadi listener dipindahkan ke onEnter()
+// Khusus pano0 tidak ada onProgress() kecuali di awal, jadi listener dipindahkan ke onEnter()
 panorama0.addEventListener('progress', (e) => onProgress(e, 0));
 panorama0.addEventListener('enter', (e) => onEnter(e, 0));
 
