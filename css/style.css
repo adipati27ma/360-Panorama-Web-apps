@@ -146,3 +146,157 @@
 #progress.finish {
   opacity: 0;
 }
+
+/* Navigation Menu */
+.menu-navigation {
+  background-color: rgba(141, 141, 141, 0.5);
+  position: absolute;
+  top: 0;
+  width: 100%;
+  text-align: center;
+  padding: 11px;
+}
+
+.menu-navigation .navigation-title {
+  color: rgba(255, 255, 255, 0.95);
+  font-weight: bold;
+  font-size: 1.25rem;
+}
+
+/* Hamburger Nav Icon */
+.nav-icon-wrapper,
+#nav-icon,
+#nav-icon span {
+  margin: 0;
+  padding: 0;
+}
+
+.nav-icon-wrapper {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  background-color: rgb(138, 132, 132);
+  padding: 5px;
+  transition: .25s;
+}
+
+.nav-icon-wrapper:hover {
+  background-color: rgb(160, 154, 154);
+}
+
+#nav-icon {
+  width: 35px;
+  height: 20px;
+  /* background-color: aqua; */
+  position: relative;
+  margin: 2px auto;
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: .5s ease-in-out;
+  -moz-transition: .5s ease-in-out;
+  -o-transition: .5s ease-in-out;
+  transition: .5s ease-in-out;
+  cursor: pointer;
+}
+
+#nav-icon span {
+  display: block;
+  position: absolute;
+  height: 3px;
+  width: 100%;
+  background: white;
+  border-radius: 9px;
+  opacity: 1;
+  left: 0;
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: .25s ease-in-out;
+  -moz-transition: .25s ease-in-out;
+  -o-transition: .25s ease-in-out;
+  transition: .25s ease-in-out;
+}
+
+#nav-icon span:nth-child(1) {
+  top: 0px;
+}
+
+#nav-icon span:nth-child(2) {
+  top: 10px;
+}
+
+#nav-icon span:nth-child(3) {
+  top: 20px;
+}
+
+#nav-icon.open span:nth-child(1) {
+  top: 10px;
+  -webkit-transform: rotate(135deg);
+  -moz-transform: rotate(135deg);
+  -o-transform: rotate(135deg);
+  transform: rotate(135deg);
+}
+
+#nav-icon.open span:nth-child(2) {
+  opacity: 0;
+  left: -60px;
+}
+
+#nav-icon.open span:nth-child(3) {
+  top: 10px;
+  -webkit-transform: rotate(-135deg);
+  -moz-transform: rotate(-135deg);
+  -o-transform: rotate(-135deg);
+  transform: rotate(-135deg);
+}
+
+/* End of Hamburger Nav Icon */
+
+
+/* Menu List Item */
+.menu-list {
+  position: absolute;
+  left: 0;
+  top: 45px;
+
+  background-color: rgba(141, 141, 141, 0.5);
+  color: white;
+  font-weight: 500;
+  font-size: 1.15rem;
+
+  transform: translateX(-100%);
+  transition: .25s;
+}
+
+.menu-list.show {
+  transform: translateX(0);
+}
+
+.menu-item {
+  border-top: 1px solid lightgray;
+  padding: 5px;
+  cursor: pointer;
+  transition: .25s;
+}
+
+.menu-item.active {
+  background-color: rgba(126, 126, 126, 0.5);
+  border-top: 1px solid transparent;
+}
+
+.menu-item.active+.menu-item {
+  border-top: 1px solid transparent;
+}
+
+.menu-item:hover {
+  background-color: aliceblue;
+  color: rgb(72, 74, 75);
+}
+
+/* End of Menu List Item */
+
+
+/* End of Navigation Menu */

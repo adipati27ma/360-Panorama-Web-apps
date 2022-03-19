@@ -5,14 +5,17 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Coba Panolens</title>
+  <title>(VFT) Virtual Field Trip</title>
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
 </head>
 
 <body>
+  <!-- Panorama Container -->
   <div class="panorama-image"></div>
 
+  <!-- Infospots -->
   <div id="desc-container" style="display:none">
     <iframe src="https://www.youtube.com/embed/D7icsuamx5E"></iframe>
     <div class="title">China's Forgotten War</div>
@@ -48,14 +51,52 @@
     </div>
   </div>
 
+  <!-- Infospots Panorama Gurun -->
+  <!-- <div class="infospot infospot-2-6">
+    <div class="toggle-wrapper">
+      <span>Infospot 6</span>
+    </div>
+    <div class="content-infospot">
+      <div class="content-wrapper">
+        <h2 class="title">Lake's Bridge</h2>
+        <img class="infospot-image" src="images/infospots/2-6.png" alt="reptil dan kalajengking">
+      </div>
+    </div>
+  </div> -->
+  <!-- End of Infospots Panorama Gurun -->
 
+  <!-- End of Infospots -->
+
+  <!-- Image Viewer -->
   <div class="image-viewer-overlay">
     <div class="content">
       <img class="image-zoom" src="" alt="">
     </div>
   </div>
+  <!-- End of Image Viewer -->
 
+  <!-- Loading Progress -->
   <div id="progress"></div>
+
+  <!-- Menu Navigation -->
+  <div class="menu-navigation">
+    <div class="nav-icon-wrapper">
+      <div id="nav-icon">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+    <span class="navigation-title">Virtual Field Trip</span>
+  </div>
+
+  <div class="menu-list">
+    <div class="menu-item active" data-panorama="home">Home</div>
+    <div class="menu-item" data-panorama="laut-dangkal">Ekosistem Laut Dangkal</div>
+    <div class="menu-item" data-panorama="gurun">Ekosistem Gurun</div>
+    <div class="menu-item" data-panorama="sungai">Ekosistem Sungai</div>
+  </div>
+  <!-- End of Menu Navigation -->
 
   <script src="js/threer105.min.js"></script>
   <script src="js/panolens.min.js"></script>

@@ -1,8 +1,8 @@
 const panoImage = document.querySelector('.panorama-image');
 const lakePano = '../images/pano2.jpg';
-const shallowSeaPano = '../images/laut-dangkal.jpg';
-const dessertPano = '../images/dessert.jpg';
-const riverPano = '../images/sungai.jpeg';
+const shallowSeaPano = '../images/LAUT.jpg';
+const dessertPano = '../images/GURUN.jpg';
+const riverPano = '../images/SUNGAI.jpg';
 
 // For Mouse Event---
 panoImage.addEventListener('mousedown', () => {
@@ -178,3 +178,61 @@ panoImage.addEventListener('mousedown', (e) => {
     });
   }
 });
+
+// Navigation Icon Hamburger
+// (function() {}) sama dengan $(document).ready()
+(function () {
+  const hamburgerIcon = document.querySelector('#nav-icon');
+  const menuList = document.querySelector('.menu-list');
+  const menuItem = document.querySelectorAll('.menu-item');
+  const navTitle = document.querySelector('.navigation-title');
+  const panoList = viewer.getScene().children;
+  let panoActive;
+  panoList.forEach((element, index) => {
+    if (element.active) {
+      panoActive = `panorama${index + 1}`;
+    }
+  });
+
+  hamburgerIcon.addEventListener('click', (e) => {
+    hamburgerIcon.classList.toggle('open');
+    menuList.classList.toggle('show');
+  });
+
+  menuItem.forEach((element) => {
+    element.addEventListener('click', (e) => {
+      menuItem.forEach((element) => {
+        element.classList.remove('active');
+      });
+
+      switch (e.target.dataset.panorama) {
+        case 'home':
+          viewer.setPanorama(panorama1);
+          navTitle.innerHTML = 'Virtual Field Trip';
+          e.target.classList.add('active');
+          break;
+
+        case 'laut-dangkal':
+          viewer.setPanorama(panorama2);
+          navTitle.innerHTML = 'Ekosistem Laut Dangkal';
+          e.target.classList.add('active');
+          break;
+
+        case 'gurun':
+          viewer.setPanorama(panorama3);
+          navTitle.innerHTML = 'Ekosistem Gurun';
+          e.target.classList.add('active');
+          break;
+
+        case 'sungai':
+          viewer.setPanorama(panorama4);
+          navTitle.innerHTML = 'Ekosistem Sungai';
+          e.target.classList.add('active');
+          break;
+
+        default:
+          break;
+      }
+    });
+  });
+})();
