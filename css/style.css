@@ -176,6 +176,7 @@
   top: 5px;
   left: 5px;
   background-color: rgb(138, 132, 132);
+  border-radius: 3px;
   padding: 5px;
   transition: .25s;
 }
