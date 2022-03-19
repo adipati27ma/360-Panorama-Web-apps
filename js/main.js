@@ -16,10 +16,10 @@ panoImage.addEventListener('mouseup', () => {
 
 //
 // Panorama Code---
-const panorama1 = new PANOLENS.ImagePanorama(lakePano);
-const panorama2 = new PANOLENS.ImagePanorama(shallowSeaPano);
-const panorama3 = new PANOLENS.ImagePanorama(dessertPano);
-const panorama4 = new PANOLENS.ImagePanorama(riverPano);
+const panorama0 = new PANOLENS.ImagePanorama(lakePano);
+const panorama1 = new PANOLENS.ImagePanorama(shallowSeaPano);
+const panorama2 = new PANOLENS.ImagePanorama(dessertPano);
+const panorama3 = new PANOLENS.ImagePanorama(riverPano);
 
 const viewer = new PANOLENS.Viewer({
   container: panoImage,
@@ -52,63 +52,46 @@ infospot4.position.set(385.77, 427.56, -4960.2);
 infospot4.addHoverElement(document.querySelector('.infospot-4'), -55);
 infospot4.lockHoverElement();
 
-// ---Infospot Pano 2
+// ---Infospot Pano 1 (Laut Dangkal)
 
-// ---Infospot Pano 3
+// ---Infospot Pano 2 (Gurun)
+const infospot2_6 = new PANOLENS.Infospot();
+infospot2_6.position.set(2174.95, -1892.99, 4077.62);
+infospot2_6.addHoverElement(document.querySelector('.infospot-2_6'), -55);
+infospot2_6.lockHoverElement();
 
-// ---Infospot Pano 4
+// ---Infospot Pano 3 (Sungai)
 const infospotPengamat = new PANOLENS.Infospot();
 infospotPengamat.position.set(-4878.99, 33.45, 1078.34);
 infospotPengamat.addHoverText('Pengamat');
 
 // Infospot Add to each Pano
-panorama1.add(infospot1, infospot2, infospot3, infospot4);
-panorama4.add(infospotPengamat);
+panorama0.add(infospot1, infospot2, infospot3, infospot4);
+panorama2.add(infospot2_6);
+panorama3.add(infospotPengamat);
 
 /* --End of Infospot code-- */
 
-// PanoLoading Event Listener
-let progress, progressElement;
-progressElement = document.getElementById('progress');
-
-function onEnter(event) {
-  progressElement.style.width = 0;
-  progressElement.classList.remove('finish');
-}
-
-function onProgress(event) {
-  progress = (event.progress.loaded / event.progress.total) * 100;
-  progressElement.style.width = progress + '%';
-  if (progress === 100) {
-    progressElement.classList.add('finish');
-  }
-}
-
-panorama1.addEventListener('progress', onProgress);
-panorama1.addEventListener('enter', onEnter);
-panorama2.addEventListener('progress', onProgress);
-panorama2.addEventListener('enter', onEnter);
-panorama3.addEventListener('progress', onProgress);
-panorama3.addEventListener('enter', onEnter);
-panorama4.addEventListener('progress', onProgress);
-panorama4.addEventListener('enter', onEnter);
-// End of PanoLoading Event Listener
-
-viewer.add(panorama1, panorama2, panorama3, panorama4);
+viewer.add(panorama0, panorama1, panorama2, panorama3);
 
 // Panorama Link
-panorama1.link(panorama2, new THREE.Vector3(4815.14, -425.18, -1247.19));
-panorama1.link(panorama3, new THREE.Vector3(4974.48, 100.5, 411.7));
-panorama1.link(panorama4, new THREE.Vector3(100.13, 80.29, 4991.6));
-panorama2.link(panorama1, new THREE.Vector3(2328.12, 2263.85, -3796.19));
-panorama3.link(panorama1, new THREE.Vector3(4351.12, 1126.62, -2172.69));
-panorama4.link(panorama1, new THREE.Vector3(1411.58, -361.02, -4776.39));
+panorama0.link(panorama1, new THREE.Vector3(4815.14, -425.18, -1247.19));
+panorama0.link(panorama2, new THREE.Vector3(4974.48, 100.5, 411.7));
+panorama0.link(panorama3, new THREE.Vector3(100.13, 80.29, 4991.6));
+panorama1.link(panorama0, new THREE.Vector3(2328.12, 2263.85, -3796.19));
+panorama2.link(panorama0, new THREE.Vector3(4351.12, 1126.62, -2172.69));
+panorama3.link(panorama0, new THREE.Vector3(1411.58, -361.02, -4776.39));
 
 // End of Panorama Code---
 //
 
 // My Script---
 const infospotEl = document.querySelectorAll('.infospot');
+const hamburgerIcon = document.querySelector('#nav-icon');
+const menuList = document.querySelector('.menu-list');
+const menuItem = document.querySelectorAll('.menu-item');
+const navTitle = document.querySelector('.navigation-title');
+const panoList = viewer.getScene().children;
 
 // toggle infospot content + Event Listener image viewer
 const overlayContainer = document.querySelector('.image-viewer-overlay');
@@ -182,11 +165,6 @@ panoImage.addEventListener('mousedown', (e) => {
 // Navigation Icon Hamburger
 // (function() {}) sama dengan $(document).ready()
 (function () {
-  const hamburgerIcon = document.querySelector('#nav-icon');
-  const menuList = document.querySelector('.menu-list');
-  const menuItem = document.querySelectorAll('.menu-item');
-  const navTitle = document.querySelector('.navigation-title');
-  const panoList = viewer.getScene().children;
   let panoActive;
   panoList.forEach((element, index) => {
     if (element.active) {
@@ -201,33 +179,21 @@ panoImage.addEventListener('mousedown', (e) => {
 
   menuItem.forEach((element) => {
     element.addEventListener('click', (e) => {
-      menuItem.forEach((element) => {
-        element.classList.remove('active');
-      });
-
       switch (e.target.dataset.panorama) {
         case 'home':
-          viewer.setPanorama(panorama1);
-          navTitle.innerHTML = 'Virtual Field Trip';
-          e.target.classList.add('active');
+          viewer.setPanorama(panorama0);
           break;
 
         case 'laut-dangkal':
-          viewer.setPanorama(panorama2);
-          navTitle.innerHTML = 'Ekosistem Laut Dangkal';
-          e.target.classList.add('active');
+          viewer.setPanorama(panorama1);
           break;
 
         case 'gurun':
-          viewer.setPanorama(panorama3);
-          navTitle.innerHTML = 'Ekosistem Gurun';
-          e.target.classList.add('active');
+          viewer.setPanorama(panorama2);
           break;
 
         case 'sungai':
-          viewer.setPanorama(panorama4);
-          navTitle.innerHTML = 'Ekosistem Sungai';
-          e.target.classList.add('active');
+          viewer.setPanorama(panorama3);
           break;
 
         default:
@@ -236,3 +202,75 @@ panoImage.addEventListener('mousedown', (e) => {
     });
   });
 })();
+// End of My Script---
+
+// ---PanoLoading Event Listener---
+let progress, progressElement;
+progressElement = document.getElementById('progress');
+
+function onEnter(event, panoNumber) {
+  progressElement.style.width = 0;
+  progressElement.classList.remove('finish');
+
+  // Khusus pano0 tidak ada onProgress(), jadi listener dipindahkan ke onEnter()
+  switch (panoNumber) {
+    case 0:
+      navTitle.innerHTML = 'Virtual Field Trip';
+      menuItem.forEach((element) => {
+        element.classList.remove('active');
+      });
+      menuItem[0].classList.add('active');
+      break;
+
+    default:
+      break;
+  }
+}
+
+function onProgress(event, panoNumber) {
+  progress = (event.progress.loaded / event.progress.total) * 100;
+  progressElement.style.width = progress + '%';
+  if (progress === 100) {
+    progressElement.classList.add('finish');
+
+    // Change title & active nav menu
+    menuItem.forEach((element) => {
+      element.classList.remove('active');
+    });
+
+    // Khusus pano0 tidak ada onProgress(), jadi listener dipindahkan ke onEnter()
+    switch (panoNumber) {
+      case 1:
+        navTitle.innerHTML = 'Ekosistem Laut Dangkal';
+        menuItem[panoNumber].classList.add('active');
+        break;
+
+      case 2:
+        navTitle.innerHTML = 'Ekosistem Gurun';
+        menuItem[panoNumber].classList.add('active');
+        break;
+
+      case 3:
+        navTitle.innerHTML = 'Ekosistem Sungai';
+        menuItem[panoNumber].classList.add('active');
+        break;
+
+      default:
+        break;
+    }
+  }
+}
+
+// Khusus pano0 tidak ada onProgress(), jadi listener dipindahkan ke onEnter()
+panorama0.addEventListener('progress', (e) => onProgress(e, 0));
+panorama0.addEventListener('enter', (e) => onEnter(e, 0));
+
+panorama1.addEventListener('progress', (e) => onProgress(e, 1));
+panorama1.addEventListener('enter', onEnter);
+
+panorama2.addEventListener('progress', (e) => onProgress(e, 2));
+panorama2.addEventListener('enter', onEnter);
+
+panorama3.addEventListener('progress', (e) => onProgress(e, 3));
+panorama3.addEventListener('enter', onEnter);
+// End of PanoLoading Event Listener
