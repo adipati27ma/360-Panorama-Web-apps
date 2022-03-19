@@ -37,24 +37,49 @@ const infospot1 = new PANOLENS.Infospot();
 infospot1.position.set(4358.64, 483.64, 2386.35);
 infospot1.addHoverText('Welcome to Manson Lake');
 
-const infospot2 = new PANOLENS.Infospot();
-infospot2.position.set(4961.67, 401.3, -416.92);
-infospot2.addHoverElement(document.getElementById('desc-container'), -200);
+// const infospot2 = new PANOLENS.Infospot();
+// infospot2.position.set(4961.67, 401.3, -416.92);
+// infospot2.addHoverElement(document.getElementById('desc-container'), -200);
 
-const infospot3 = new PANOLENS.Infospot();
-infospot3.position.set(-3523.79, -620.04, 3477.75);
-// infospot3.position.set(-2032.76, -215.69, -4558.7);
-infospot3.addHoverElement(document.querySelector('.infospot-3'), -55);
-infospot3.lockHoverElement();
+// const infospot3 = new PANOLENS.Infospot();
+// infospot3.position.set(-3523.79, -620.04, 3477.75);
+// // infospot3.position.set(-2032.76, -215.69, -4558.7);
+// infospot3.addHoverElement(document.querySelector('.infospot-3'), -55);
+// infospot3.lockHoverElement();
 
-const infospot4 = new PANOLENS.Infospot();
-infospot4.position.set(385.77, 427.56, -4960.2);
-infospot4.addHoverElement(document.querySelector('.infospot-4'), -55);
-infospot4.lockHoverElement();
+// const infospot4 = new PANOLENS.Infospot();
+// infospot4.position.set(385.77, 427.56, -4960.2);
+// infospot4.addHoverElement(document.querySelector('.infospot-4'), -55);
+// infospot4.lockHoverElement();
 
 // ---Infospot Pano 1 (Laut Dangkal)
 
 // ---Infospot Pano 2 (Gurun)
+const infospot2_1 = new PANOLENS.Infospot();
+infospot2_1.position.set(-2276.57, 4179.53, 1514.17);
+infospot2_1.addHoverElement(document.querySelector('.infospot-2_1'), -55);
+infospot2_1.lockHoverElement();
+
+const infospot2_2 = new PANOLENS.Infospot();
+infospot2_2.position.set(4133.99, 1168.63, 2547.99);
+infospot2_2.addHoverElement(document.querySelector('.infospot-2_2'), -55);
+infospot2_2.lockHoverElement();
+
+const infospot2_3 = new PANOLENS.Infospot();
+infospot2_3.position.set(737.59, 551.24, 4903.96);
+infospot2_3.addHoverElement(document.querySelector('.infospot-2_3'), -55);
+infospot2_3.lockHoverElement();
+
+const infospot2_4 = new PANOLENS.Infospot();
+infospot2_4.position.set(-3202.77, -266.82, -3817.95);
+infospot2_4.addHoverElement(document.querySelector('.infospot-2_4'), -55);
+infospot2_4.lockHoverElement();
+
+const infospot2_5 = new PANOLENS.Infospot();
+infospot2_5.position.set(3005.22, -103.65, -3986.17);
+infospot2_5.addHoverElement(document.querySelector('.infospot-2_5'), -55);
+infospot2_5.lockHoverElement();
+
 const infospot2_6 = new PANOLENS.Infospot();
 infospot2_6.position.set(2174.95, -1892.99, 4077.62);
 infospot2_6.addHoverElement(document.querySelector('.infospot-2_6'), -55);
@@ -66,8 +91,15 @@ infospotPengamat.position.set(-4878.99, 33.45, 1078.34);
 infospotPengamat.addHoverText('Pengamat');
 
 // Infospot Add to each Pano
-panorama0.add(infospot1, infospot2, infospot3, infospot4);
-panorama2.add(infospot2_6);
+panorama0.add(infospot1);
+panorama2.add(
+  infospot2_1,
+  infospot2_2,
+  infospot2_3,
+  infospot2_4,
+  infospot2_5,
+  infospot2_6
+);
 panorama3.add(infospotPengamat);
 
 /* --End of Infospot code-- */
