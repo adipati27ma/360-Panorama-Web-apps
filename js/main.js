@@ -205,6 +205,7 @@ panoImage.addEventListener('mousedown', (e) => {
 // End of My Script---
 
 // ---PanoLoading Event Listener---
+let { isLoaded0, isLoaded1, isLoaded2, isLoaded3 } = false;
 let progress, progressElement;
 progressElement = document.getElementById('progress');
 
@@ -212,14 +213,47 @@ function onEnter(event, panoNumber) {
   progressElement.style.width = 0;
   progressElement.classList.remove('finish');
 
+  // Change title & active nav menu
   // Khusus pano0 tidak ada onProgress() kecuali di awal, jadi listener dipindahkan ke onEnter()
   switch (panoNumber) {
     case 0:
-      navTitle.innerHTML = 'Virtual Field Trip';
-      menuItem.forEach((element) => {
-        element.classList.remove('active');
-      });
-      menuItem[0].classList.add('active');
+      if (isLoaded0) {
+        navTitle.innerHTML = 'Virtual Field Trip';
+        menuItem.forEach((element) => {
+          element.classList.remove('active');
+        });
+        menuItem[panoNumber].classList.add('active');
+      }
+      break;
+
+    case 1:
+      if (isLoaded1) {
+        navTitle.innerHTML = 'Ekosistem Laut Dangkal';
+        menuItem.forEach((element) => {
+          element.classList.remove('active');
+        });
+        menuItem[panoNumber].classList.add('active');
+      }
+      break;
+
+    case 2:
+      if (isLoaded2) {
+        navTitle.innerHTML = 'Ekosistem Gurun';
+        menuItem.forEach((element) => {
+          element.classList.remove('active');
+        });
+        menuItem[panoNumber].classList.add('active');
+      }
+      break;
+
+    case 3:
+      if (isLoaded3) {
+        navTitle.innerHTML = 'Ekosistem Sungai';
+        menuItem.forEach((element) => {
+          element.classList.remove('active');
+        });
+        menuItem[panoNumber].classList.add('active');
+      }
       break;
 
     default:
@@ -234,30 +268,50 @@ function onProgress(event, panoNumber) {
     progressElement.classList.add('finish');
 
     // Change title & active nav menu
-    menuItem.forEach((element) => {
-      element.classList.remove('active');
-    });
-
     // Khusus pano0 tidak ada onProgress() kecuali di awal, jadi listener dipindahkan ke onEnter()
     switch (panoNumber) {
       case 0:
-        navTitle.innerHTML = 'Virtual Field Trip';
-        menuItem[panoNumber].classList.add('active');
+        if (!isLoaded0) {
+          navTitle.innerHTML = 'Virtual Field Trip';
+          menuItem.forEach((element) => {
+            element.classList.remove('active');
+          });
+          menuItem[panoNumber].classList.add('active');
+          isLoaded0 = true;
+        }
         break;
 
       case 1:
-        navTitle.innerHTML = 'Ekosistem Laut Dangkal';
-        menuItem[panoNumber].classList.add('active');
+        if (!isLoaded1) {
+          navTitle.innerHTML = 'Ekosistem Laut Dangkal';
+          menuItem.forEach((element) => {
+            element.classList.remove('active');
+          });
+          menuItem[panoNumber].classList.add('active');
+          isLoaded1 = true;
+        }
         break;
 
       case 2:
-        navTitle.innerHTML = 'Ekosistem Gurun';
-        menuItem[panoNumber].classList.add('active');
+        if (!isLoaded2) {
+          navTitle.innerHTML = 'Ekosistem Gurun';
+          menuItem.forEach((element) => {
+            element.classList.remove('active');
+          });
+          menuItem[panoNumber].classList.add('active');
+          isLoaded2 = true;
+        }
         break;
 
       case 3:
-        navTitle.innerHTML = 'Ekosistem Sungai';
-        menuItem[panoNumber].classList.add('active');
+        if (!isLoaded3) {
+          navTitle.innerHTML = 'Ekosistem Sungai';
+          menuItem.forEach((element) => {
+            element.classList.remove('active');
+          });
+          menuItem[panoNumber].classList.add('active');
+          isLoaded3 = true;
+        }
         break;
 
       default:
@@ -271,11 +325,11 @@ panorama0.addEventListener('progress', (e) => onProgress(e, 0));
 panorama0.addEventListener('enter', (e) => onEnter(e, 0));
 
 panorama1.addEventListener('progress', (e) => onProgress(e, 1));
-panorama1.addEventListener('enter', onEnter);
+panorama1.addEventListener('enter', (e) => onEnter(e, 1));
 
 panorama2.addEventListener('progress', (e) => onProgress(e, 2));
-panorama2.addEventListener('enter', onEnter);
+panorama2.addEventListener('enter', (e) => onEnter(e, 2));
 
 panorama3.addEventListener('progress', (e) => onProgress(e, 3));
-panorama3.addEventListener('enter', onEnter);
+panorama3.addEventListener('enter', (e) => onEnter(e, 3));
 // End of PanoLoading Event Listener
