@@ -23,9 +23,9 @@ const panorama3 = new PANOLENS.ImagePanorama(riverPano);
 
 const viewer = new PANOLENS.Viewer({
   container: panoImage,
-  autoRotate: true,
-  autoRotateSpeed: 0.5,
-  autoRotateActivationDuration: 10000,
+  // autoRotate: true,
+  // autoRotateSpeed: 0.5,
+  // autoRotateActivationDuration: 10000,
   // initialLookAt: new THREE.Vector3(4365.89, 221.37, 2410.68), // tidak bisa dipakai, panolens lama:(
   // controlBar: false,
   output: 'console',
