@@ -35,7 +35,16 @@ const viewer = new PANOLENS.Viewer({
 // ---Infospot Pano 0
 const infospot1 = new PANOLENS.Infospot();
 infospot1.position.set(4358.64, 483.64, 2386.35);
-infospot1.addHoverText('Welcome to Manson Lake');
+infospot1.addHoverText('Selamat Datang di Virtual Field Trip');
+
+const infospotPetunjuk = new PANOLENS.Infospot();
+// infospotPetunjuk.position.set(4367.6, 7.76, 2425.79);
+infospotPetunjuk.position.set(3739.43, -118.55, 3308.99);
+infospotPetunjuk.addHoverElement(
+  document.querySelector('.infospot-petunjuk'),
+  -55
+);
+infospotPetunjuk.lockHoverElement();
 
 const infospotLautDangkal = new PANOLENS.Infospot();
 infospotLautDangkal.position.set(4697.39, -606.55, -1470.39);
@@ -71,7 +80,7 @@ infospot1_1.addHoverElement(document.querySelector('.infospot-1_1'), -55);
 infospot1_1.lockHoverElement();
 
 const infospot1_2 = new PANOLENS.Infospot();
-infospot1_2.position.set(4578.95, 1301.3, 1514.1);
+infospot1_2.position.set(4607.35, 1066.58, 1601.28);
 infospot1_2.addHoverElement(document.querySelector('.infospot-1_2'), -55);
 infospot1_2.lockHoverElement();
 
@@ -197,7 +206,13 @@ infospot3_9.addHoverElement(document.querySelector('.infospot-3_9'), -55);
 infospot3_9.lockHoverElement();
 
 // Infospot Add to each Pano
-panorama0.add(infospot1, infospotLautDangkal, infospotGurun, infospotSungai);
+panorama0.add(
+  infospot1,
+  infospotPetunjuk,
+  infospotLautDangkal,
+  infospotGurun,
+  infospotSungai
+);
 panorama1.add(
   infospot1_1,
   infospot1_2,

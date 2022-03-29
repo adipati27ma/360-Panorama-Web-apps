@@ -31,7 +31,15 @@
 }
 
 .text {
-  padding: 0 20px 20px 20px;
+  padding: 10px;
+  background-color: rgba(230, 230, 230, 0.95);
+  font-size: 1.15rem;
+}
+
+.text-list {
+  padding: 10px 10px 10px 50px;
+  background-color: rgba(230, 230, 230, 0.95);
+  font-size: 1.15rem;
 }
 
 .infospot {
