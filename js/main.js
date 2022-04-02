@@ -342,6 +342,12 @@ panoImage.addEventListener('mousedown', (e) => {
   }
 });
 
+panoImage.addEventListener('touchstart', (e) => {
+  if (e.target.classList.contains('panolens-canvas')) {
+    removeContentInfospot();
+  }
+});
+
 // Navigation Icon Hamburger
 // (function() {}) sama dengan $(document).ready()
 (function () {
@@ -391,6 +397,8 @@ progressElement = document.getElementById('progress');
 function onEnter(event, panoNumber) {
   progressElement.style.width = 0;
   progressElement.classList.remove('finish');
+
+  removeContentInfospot();
 
   // Change title & active nav menu
   // Khusus pano0 tidak ada onProgress() kecuali di awal, jadi listener dipindahkan ke onEnter()
