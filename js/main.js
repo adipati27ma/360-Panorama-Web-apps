@@ -262,7 +262,7 @@ panorama3.link(panorama0, new THREE.Vector3(1411.58, -361.02, -4776.39));
 //
 
 // My Script---
-const infospotEl = document.querySelectorAll('.infospot');
+const infospotsEl = document.querySelectorAll('.infospot');
 const hamburgerIcon = document.querySelector('#nav-icon');
 const menuList = document.querySelector('.menu-list');
 const menuItem = document.querySelectorAll('.menu-item');
@@ -310,7 +310,7 @@ function toggleInfospot(e) {
   }
 }
 
-infospotEl.forEach((el) => {
+infospotsEl.forEach((el) => {
   el.addEventListener('click', toggleInfospot);
   el.addEventListener('touchstart', toggleInfospot);
 });
@@ -330,18 +330,21 @@ overlayContainer.addEventListener('touchstart', exitOverlay);
 
 // Hide Content Infospot on panorama-click
 const allContentInfospot = document.querySelectorAll('.content-infospot');
+function removeContentInfospot() {
+  allContentInfospot.forEach((element) => {
+    element.classList.remove('show');
+  });
+}
+
 panoImage.addEventListener('mousedown', (e) => {
   if (e.target.classList.contains('panolens-canvas')) {
-    allContentInfospot.forEach((element) => {
-      element.classList.remove('show');
-    });
+    removeContentInfospot();
   }
 });
 
 // Navigation Icon Hamburger
 // (function() {}) sama dengan $(document).ready()
 (function () {
-  let panoActive;
   panoList.forEach((element, index) => {
     if (element.active) {
       panoActive = `panorama${index + 1}`;
